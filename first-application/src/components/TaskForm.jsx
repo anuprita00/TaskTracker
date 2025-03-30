@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./TaskForm.css";
 import Tag from "./Tag";
 
-const TaskForm = () => {
+const TaskForm = ({setTasks}) => {
   const [taskData, setTaskData] = useState({
     task: "",
     status: "todo",
@@ -40,14 +40,14 @@ const TaskForm = () => {
       });
     }
   };
-  console.log(taskData.tags);
+  // console.log(taskData.tags); 
 
   const handleChange = (e) => {
     const { name, value } = e.target; // Extract 'name' and 'value' from the input/select
     // const name = e.target.name;
     // const value = e.target.value;
 
-    console.log(name, value);
+    // console.log(name, value);
 
     setTaskData((prev) => {
       return {
@@ -59,7 +59,11 @@ const TaskForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevents page reload
-    console.log(e);
+    // console.log(e);
+    // update the setTask
+    setTasks(prev =>{
+      return [...prev, taskData];
+    })
 
     setTaskData({ task: "", status: "todo", tags: [] }); // Reset form after submission
   };
@@ -80,10 +84,10 @@ const TaskForm = () => {
         <section className="task_form_bottom_line">
           <div>
             {/*pass true of false for each tag selected  */}
-            <Tag tagName="HTML" selectTag={selectTag} selected={"HTML"} />
-            <Tag tagName="CSS" selectTag={selectTag} selected={"CSS"} />
-            <Tag tagName="Javascript" selectTag={selectTag} selected={"Javascript"} />
-            <Tag tagName="React" selectTag={selectTag} selected={"React"} />
+            <Tag tagName="HTML" selectTag={selectTag} selected={checkTag("HTML")} />
+            <Tag tagName="CSS" selectTag={selectTag} selected={checkTag("CSS")} />
+            <Tag tagName="Javascript" selectTag={selectTag} selected={checkTag("Javascript")} />
+            <Tag tagName="React" selectTag={selectTag} selected={checkTag("React")} />
           </div>
 
           <div>
