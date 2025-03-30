@@ -4,7 +4,7 @@ import deleteIcon from'../assets/delete.png'
 import Tag from './Tag'
 
 
-const Taskcard = ({title, tags}) => {
+const Taskcard = ({title, tags, handleDelete, index}) => {
   return (
     <article className='task_card'>
       <p className='task_text'>{title}</p>
@@ -19,7 +19,7 @@ const Taskcard = ({title, tags}) => {
           }
         </div>
 
-        <div className='task_delete'>
+        <div className='task_delete' onClick={() => handleDelete(index)}>
           <img src={deleteIcon}
           className='deleteIcon' 
           alt="delete" />

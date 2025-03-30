@@ -10,6 +10,9 @@ const Tag = ({ tagName, selectTag, selected }) => {
     React: {backgroundColor: "#4cdafc"},
     default: {backgroundColor: "#f9f9f9"},
   }
+// Dynamically styles the tag button based on selected status.
+// Uses tagStyle object to apply unique styles for different tags.
+// Calls selectTag(tagName) on click to toggle selection.
 
   return (
     <button type="button"
